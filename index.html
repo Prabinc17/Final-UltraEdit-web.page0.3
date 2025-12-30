@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UltraEdit - Download Now</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #00b6d1;
+            --secondary-color: #20b120;
+            --dark-bg: #1a1a2e;
+            --light-bg: #f9f9f9;
+            --text-dark: #141B34;
+            --text-light: #b0b0b0;
+            --border-color: #e0e0e0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #ffffff;
+            color: var(--text-dark);
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+        }
+
+        /* ==================== HEADER & NAVIGATION ==================== */
+        header {
+            background: #ffffff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo img {
+            width: 150px;
+            height: auto;
+            transition: transform 0.3s ease;
+        }
+
+        .logo img:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-menu li a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-menu li a:hover {
+            color: var(--primary-color);
+        }
+
+        .menu-icon {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+
+        .menu-icon span {
+            width: 25px;
+            height: 3px;
+            background: var(--text-dark);
+            border-radius: 3px;
+            transition: 0.3s ease;
+        }
+
+        /* ==================== HERO SECTION ==================== */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            top: -200px;
+            right: -200px;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(20px); }
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .hero-highlight {
+            color: var(--primary-color);
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* ==================== BUTTONS ==================== */
+        .btn {
+            padding: 14px 28px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 16px;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #0099aa;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 182, 209, 0.3);
+        }
+
+        .btn-secondary {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background-color: #1a9019;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(32, 177, 32, 0.3);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid white;
+            color: white;
+        }
+
+        .btn-outline:hover {
+            background-color: white;
+            color: #667eea;
+        }
+
+        /* ==================== DOWNLOADS SECTION ==================== */
+        .downloads-section {
+            max-width: 1200px;
+            margin: 80px auto;
+            padding: 0 20px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-header h2 {
+            font-size: 36px;
+            margin-bottom: 10px;
+            color: var(--text-dark);
+        }
+
+        .section-header p {
+            font-size: 16px;
+            color: var(--text-light);
+        }
+
+        .version-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid var(--border-color);
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .version-info h3 {
+            font-size: 24px;
+            color: var(--text-dark);
+        }
+
+        .version-badge {
+            background: var(--light-bg);
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 14px;
+            color: var(--text-light);
+        }
+
+        /* ==================== GRID LAYOUT ==================== */
+        .downloads-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .download-card {
+            background: var(--light-bg);
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .download-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            border-color: var(--primary-color);
+        }
+
+        .card-title {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 25px;
+            color: var(--text-dark);
+        }
+
+        .card-flag {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+
+        .card-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .btn-download {
+            padding: 12px 20px;
+            font-size: 14px;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+
+        /* ==================== MAIN ==================== */
+        main {
+            min-height: calc(100vh - 200px);
+        }
+
+        /* ==================== FOOTER ==================== */
+        footer {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            color: white;
+            padding: 60px 20px 20px;
+            margin-top: 80px;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .footer-col p {
+            font-size: 14px;
+            line-height: 1.8;
+            color: var(--text-light);
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-col a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-col a:hover {
+            color: var(--primary-color);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #333;
+            padding-top: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .footer-bottom p {
+            font-size: 14px;
+            color: var(--text-light);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .social-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* ==================== RESPONSIVE DESIGN ==================== */
+        @media screen and (max-width: 768px) {
+            .menu-icon {
+                display: flex;
+            }
+
+            .nav-menu {
+                position: absolute;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                gap: 0;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            }
+
+            .nav-menu.active {
+                max-height: 400px;
+            }
+
+            .nav-menu li {
+                width: 100%;
+                padding: 15px 20px;
+                border-bottom: 1px solid var(--border-color);
+            }
+
+            .nav-menu li a {
+                width: 100%;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .downloads-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .version-info {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .section-header h2 {
+                font-size: 28px;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            nav {
+                padding: 12px 15px;
+            }
+
+            .logo img {
+                width: 120px;
+            }
+
+            .hero {
+                padding: 50px 15px;
+            }
+
+            .hero h1 {
+                font-size: 24px;
+            }
+
+            .hero p {
+                font-size: 14px;
+            }
+
+            .downloads-section {
+                margin: 50px auto;
+            }
+
+            .btn {
+                padding: 12px 20px;
+                font-size: 14px;
+            }
+
+            .card-title {
+                font-size: 18px;
+            }
+
+            .card-flag {
+                font-size: 32px;
+            }
+        }
+        .hero .btn-primary a{
+            text-decoration: none;
+            color: white;
+        }
+        .hero .btn-outline a{
+            text-decoration: none;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- ==================== HEADER ==================== -->
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="https://www.ultraedit.com/wp-content/uploads/2023/01/UE_Site-Logo.png" alt="UltraEdit Logo" />
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#products">Products</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#resources">Resources</a></li>
+                <li><a href="#about">About Us</a></li>
+            </ul>
+            <div class="menu-icon">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- ==================== MAIN CONTENT ==================== -->
+    <main>
+        <!-- HERO SECTION -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Download <span class="hero-highlight">UltraEdit</span> for Windows</h1>
+                <p>Download and try UltraEdit before you buy it! This download includes the full Windows version of the powerful text editor.</p>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary"> <a href="ue_allinone.exe"> Download Now </a> </button>
+                    <button class="btn btn-outline"><a href="ue_allinone.exe">Download Mac or Linux</a> </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- DOWNLOADS SECTION -->
+        <section class="downloads-section">
+            <div class="section-header">
+                <h2>Choose Your Language</h2>
+                <p>Available in multiple languages and formats</p>
+            </div>
+
+            <div class="version-info">
+                <h3>UltraEdit v2025.1</h3>
+                <span class="version-badge">Released 2025-10-10 | Latest changes</span>
+            </div>
+
+            <!-- DOWNLOAD CARDS GRID -->
+            <div class="downloads-grid">
+                <!-- English -->
+                <div class="download-card">
+                    <div class="card-flag">🇬🇧</div>
+                    <h3 class="card-title">English</h3>
+                    <div class="card-buttons">
+                        <a href="ue_allinone_32.exe" class="btn btn-download btn-primary">Download 32-bit</a>
+                        <a href="ue_allinone_64.exe" class="btn btn-download btn-secondary">Download 64-bit</a>
+                    </div>
+                </div>
+
+                <!-- Hindi -->
+                <div class="download-card">
+                    <div class="card-flag">🇮🇳</div>
+                    <h3 class="card-title">Hindi</h3>
+                    <div class="card-buttons">
+                        <a href="ue_hindi_32.exe" class="btn btn-download btn-primary">Download 32-bit</a>
+                        <a href="ue_hindi_64.exe" class="btn btn-download btn-secondary">Download 64-bit</a>
+                    </div>
+                </div>
+
+                <!-- Nepali -->
+                <div class="download-card">
+                    <div class="card-flag">🇳🇵</div>
+                    <h3 class="card-title">Nepali</h3>
+                    <div class="card-buttons">
+                        <a href="ue_nepali_32.exe" class="btn btn-download btn-primary">Download 32-bit</a>
+                        <a href="ue_nepali_64.exe" class="btn btn-download btn-secondary">Download 64-bit</a>
+                    </div>
+                </div>
+
+                <!-- Sanskrit -->
+                <div class="download-card">
+                    <div class="card-flag">📿</div>
+                    <h3 class="card-title">Sanskrit</h3>
+                    <div class="card-buttons">
+                        <a href="ue_sanskrit_32.exe" class="btn btn-download btn-primary">Download 32-bit</a>
+                        <a href="ue_sanskrit_64.exe" class="btn btn-download btn-secondary">Download 64-bit</a>
+                    </div>
+                </div>
+
+                <!-- Japanese -->
+                <div class="download-card">
+                    <div class="card-flag">🇯🇵</div>
+                    <h3 class="card-title">Japanese</h3>
+                    <div class="card-buttons">
+                        <a href="ue_japanese_32.exe" class="btn btn-download btn-primary">Download 32-bit</a>
+                        <a href="ue_japanese_64.exe" class="btn btn-download btn-secondary">Download 64-bit</a>
+                    </div>
+                </div>
+
+                <!-- Chinese -->
+                <div class="download-card">
+                    <div class="card-flag">🇨🇳</div>
+                    <h3 class="card-title">Chinese</h3>
+                    <div class="card-buttons">
+                        <a href="ue_chinese_32.exe" class="btn btn-download btn-primary">Download 32-bit</a>
+                        <a href="ue_chinese_64.exe" class="btn btn-download btn-secondary">Download 64-bit</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h3>About Us</h3>
+                    <p>We provide innovative text editing solutions and cutting-edge technology to help developers and professionals create amazing code.</p>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#download">Download</a></li>
+                        <li><a href="#support">Support</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="#documentation">Documentation</a></li>
+                        <li><a href="#tutorials">Tutorials</a></li>
+                        <li><a href="#blog">Blog</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Contact</h3>
+                    <p>Email: <a href="mailto:support@ultraedit.com">support@ultraedit.com</a></p>
+                    <p>Phone: <a href="tel:+1234567890">+1 (234) 567-890</a></p>
+                    <p>Address: 123 Tech Street, San Francisco, CA</p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 UltraEdit. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="#facebook">Facebook</a>
+                    <a href="#twitter">Twitter</a>
+                    <a href="#linkedin">LinkedIn</a>
+                    <a href="#instagram">Instagram</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ==================== JAVASCRIPT ==================== -->
+    <script>
+        // Mobile Menu Toggle
+        const menuIcon = document.querySelector('.menu-icon');
+        const navMenu = document.querySelector('.nav-menu');
+
+        if (menuIcon) {
+            menuIcon.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+                
+                // Animate menu icon
+                menuIcon.style.animation = 'none';
+                setTimeout(() => {
+                    menuIcon.style.animation = '';
+                }, 10);
+            });
+
+            // Close menu when a link is clicked
+            navMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navMenu.classList.remove('active');
+                });
+            });
+        }
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== '#' && document.querySelector(href)) {
+                    e.preventDefault();
+                    document.querySelector(href).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.download-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'all 0.6s ease';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
